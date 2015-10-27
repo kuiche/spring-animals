@@ -9,7 +9,11 @@
 
     <definition name="index" extends="basic">
         <put-attribute name="title" value="Animal Project" />
-        <put-attribute name="body" value="/WEB-INF/jsp/test.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
     </definition>
 
+    <definition name="animals.list" extends="basic">
+        <put-attribute name="title" value="Animal List" />
+        <put-attribute name="body" value="/WEB-INF/jsp/animals/list.jsp" />
+    </definition>
 </tiles-definitions>

@@ -1,0 +1,4 @@
+animals\controller\HomeController.class
+animals\controller\AnimalController.class
+animals\entity\Animal.class
+animals\entity\Produce.class
