@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -16,15 +18,17 @@
 <meta http-equiv="Content-Type" content="text/xml; charset=UTF-8">
 <title><tiles:getAsString name="title" /></title>
 </head>
-
 <body>
     <nav class="navbar navbar-default">
         <div class="container">
+            <tilesx:useAttribute name="current"/>
             <ul class="nav nav-tabs">
-                <li role="presentation" class="${pageContext.request.requestURI}">
+                <li role="presentation" class="${current == 'index' ? 'active' : ''}">
                     <a href="<spring:url value="/" />">Home</a>
                 </li>
-                <li role="presentation"><a href="<spring:url value="/animals.html" />">Animals</a></li>
+                <li role="presentation" class="${current == 'animals.list' ? 'active' : ''}">
+                    <a href="<spring:url value="/animals.html" />">Animals</a>
+                </li>
             </ul>
         </div>
     </nav>

@@ -1,13 +1,14 @@
 package animals.controller;
 
 import animals.entity.animal.Animal;
+import animals.entity.animal.Cow;
+import animals.exception.AnimalTypeNotFoundException;
 import animals.repository.AnimalRepository;
 import animals.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class AnimalController {
     @Autowired
     private AnimalService animalService;
 
-    @RequestMapping("/animals")
+    @RequestMapping(value="/animals", method=RequestMethod.GET)
     public String index(Model model) {
         List<Animal> animals = animalService.findAll();
         model.addAttribute("animals", animals);
@@ -28,8 +29,30 @@ public class AnimalController {
         return "animals.list";
     }
 
-    @RequestMapping(value="/animals/create", method=RequestMethod.GET)
-    public String create(Model model) {
-        return "animals.create";
+    @RequestMapping(value="/animals", method=RequestMethod.POST)
+    public String create(
+            @RequestParam(value="name", required=true) String name,
+            @RequestParam(value="type", required=true) String type,
+            Model model) {
+
+        try {
+            animalService.createAnimal(type, name);
+        } catch (AnimalTypeNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        // Redirect to list
+        return "redirect:/animals.html";
+    }
+
+    @RequestMapping(value="/animals/{id}", method=RequestMethod.DELETE)
+    public String create(
+            @PathVariable(value="id") Integer id,
+            Model model) {
+
+        animalService.delete(id);
+
+        // Redirect to list
+        return "redirect:/animals.html";
     }
 }
