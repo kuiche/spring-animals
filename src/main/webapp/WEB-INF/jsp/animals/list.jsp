@@ -7,6 +7,7 @@
 		<tr>
 			<th>#</th>
 			<th>Name</th>
+			<th>Animal Type</th>
 			<th>Noise</th>
 			<th>DOB</th>
 			<th>Delete</th>
@@ -16,6 +17,7 @@
 		<tr>
 			<td>${animal.id}</td>
 			<td>${animal.getName()}</td>
+			<td>${animal.getAnimalType()}</td>
 			<td>${animal.getNoise()}</td>
 			<td>${animal.getBirthDate()}</td>
 			<td>

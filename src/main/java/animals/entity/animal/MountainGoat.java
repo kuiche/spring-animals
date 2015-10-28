@@ -9,8 +9,7 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("MOUNTAIN_GOAT")
 public class MountainGoat extends Goat {
-    public MountainGoat() {
-        // Override default goat noise
-        this.noise = "Mountain BEHHHH";
+    public String getAnimalType() {
+        return "Mountain Goat";
     }
 }

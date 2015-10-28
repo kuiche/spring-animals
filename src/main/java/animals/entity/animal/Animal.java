@@ -36,6 +36,8 @@ public abstract class Animal {
      */
     public abstract String getNoise();
 
+    public abstract String getAnimalType();
+
     public Integer getId() {
         return id;
     }

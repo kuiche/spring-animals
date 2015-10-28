@@ -18,4 +18,9 @@ public class Goat extends Animal {
     public String getNoise() {
         return noise;
     }
+
+    @Override
+    public String getAnimalType() {
+        return "Goat";
+    }
 }
