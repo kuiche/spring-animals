@@ -1,4 +1,6 @@
-package animals.entity;
+package animals.entity.animal;
+
+import animals.entity.Produce;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -8,11 +10,14 @@ import java.util.List;
  * Created by Sam on 2015-10-27.
  */
 @Entity
-public class Animal {
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+public abstract class Animal {
+
     @Id
     @GeneratedValue
     private Integer id;
 
+    @Column(nullable=false)
     private String name;
 
     @Column(name="date_birth")
@@ -21,11 +26,15 @@ public class Animal {
     @Column(name="date_death")
     private Date deathDate;
 
-    @Column(name="type")
-    private String animalType;
-
     @OneToMany
     private List<Produce> produce;
+
+    /**
+     * Gets the noise made by the animal
+     *
+     * @return The noise
+     */
+    public abstract String getNoise();
 
     public Integer getId() {
         return id;
@@ -57,14 +66,6 @@ public class Animal {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getAnimalType() {
-        return animalType;
-    }
-
-    public void setAnimalType(String animalType) {
-        this.animalType = animalType;
     }
 
     public List<Produce> getProduce() {

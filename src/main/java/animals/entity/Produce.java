@@ -1,5 +1,7 @@
 package animals.entity;
 
+import animals.entity.animal.Animal;
+
 import javax.persistence.*;
 
 /**
@@ -40,5 +42,13 @@ public class Produce {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Animal getAnimal() {
+        return animal;
+    }
+
+    public void setAnimal(Animal animal) {
+        this.animal = animal;
     }
 }

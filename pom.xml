@@ -15,10 +15,17 @@
         <jstl.version>1.2</jstl.version>
         <servletapi.version>2.5</servletapi.version>
         <apache.tiles>3.0.5</apache.tiles>
+        <hibernate.version>4.3.5.Final</hibernate.version>
     </properties>
 
-
     <dependencies>
+        <!-- JSTL -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>
+
         <!-- Apache Tiles -->
         <dependency>
             <groupId>org.apache.tiles</groupId>
@@ -35,14 +42,14 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.3.5.Final</version>
+            <version>${hibernate.version}</version>
         </dependency>
 
         <!-- Spring data JPA -->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>1.9.0.RELEASE</version>
+            <version>1.8.2.RELEASE</version>
         </dependency>
 
         <!-- MySQL -->

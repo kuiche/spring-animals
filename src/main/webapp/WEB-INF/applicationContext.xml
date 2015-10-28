@@ -3,12 +3,15 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/tx
-    http://www.springframework.org/schema/tx/spring-tx.xsd">
+    http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/data/jpa
+    http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <!-- Scan everything except controllers -->
     <context:component-scan base-package="animals">
@@ -22,7 +25,7 @@
         <property name="password" value="" />
     </bean>
 
-    <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="emf">
+    <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
         <property name="packagesToScan" value="animals.entity" />
         <property name="dataSource" ref="dataSource" />
         <property name="jpaProperties">
@@ -42,4 +45,9 @@
 
     <tx:annotation-driven transaction-manager="transactionManager" />
 
+    <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <jpa:repositories base-package="animals.repository" />
 </beans>
