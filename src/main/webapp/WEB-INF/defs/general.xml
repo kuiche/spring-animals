@@ -19,8 +19,9 @@
         <put-attribute name="current" value="animals.list" />
     </definition>
 
-    <definition name="animals.create" extends="basic">
-        <put-attribute name="title" value="Create Animal" />
-        <put-attribute name="body" value="/WEB-INF/jsp/animals/create.jsp" />
+    <definition name="animals.show" extends="basic">
+        <put-attribute name="title" value="View Animal" />
+        <put-attribute name="body" value="/WEB-INF/jsp/animals/show.jsp" />
+        <put-attribute name="current" value="animals.list" />
     </definition>
 </tiles-definitions>

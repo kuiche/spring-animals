@@ -15,7 +15,7 @@
 	</thead>
 	<c:forEach items="${animals}" var="animal">
 		<tr>
-			<td>${animal.id}</td>
+			<td><a href="/animals/${animal.id}.html">${animal.id}</a></td>
 			<td>${animal.getName()}</td>
 			<td>${animal.getAnimalType()}</td>
 			<td>${animal.getNoise()}</td>
@@ -60,6 +60,7 @@
                     	    <%@ page import="animals.service.AnimalService" %>
                     		<select name="type" class="form-control" required="required">
                     			<option value="<%=AnimalService.COW%>">Cow</option>
+                    			<option value="<%=AnimalService.SHEEP%>">Sheep</option>
                     			<option value="<%=AnimalService.GOAT%>">Goat</option>
                     			<option value="<%=AnimalService.MOUNTAIN_GOAT%>">Mountain goat</option>
                     		</select>

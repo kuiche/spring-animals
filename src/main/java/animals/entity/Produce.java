@@ -13,10 +13,13 @@ public class Produce {
     @GeneratedValue
     private Integer id;
 
+    @Column(nullable = false)
     private String type;
+
+    @Column(nullable = false)
     private Integer count;
 
-    @ManyToOne(fetch= FetchType.LAZY)
+    @ManyToOne
     @JoinColumn
     private Animal animal;
 

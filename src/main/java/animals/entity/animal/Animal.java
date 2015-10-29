@@ -36,6 +36,11 @@ public abstract class Animal {
      */
     public abstract String getNoise();
 
+    /**
+     * Display name for the animal e.g. "Cow"
+     *
+     * @return The animal name
+     */
     public abstract String getAnimalType();
 
     public Integer getId() {

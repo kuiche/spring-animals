@@ -46,6 +46,7 @@ public class DBInitService {
 
         Produce seedProduce = new Produce();
         seedProduce.setCount(5);
+        seedProduce.setType("Milk");
         seedProduce.setAnimal(seedCow);
 
         produceRepository.save(seedProduce);

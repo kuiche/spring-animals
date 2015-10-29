@@ -1,11 +1,10 @@
 package animals.service;
 
-import animals.entity.animal.Animal;
-import animals.entity.animal.Cow;
-import animals.entity.animal.Goat;
-import animals.entity.animal.MountainGoat;
+import animals.entity.Produce;
+import animals.entity.animal.*;
 import animals.exception.AnimalTypeNotFoundException;
 import animals.repository.AnimalRepository;
+import animals.repository.ProduceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,10 +23,14 @@ public class AnimalService {
      */
     public static final String COW = "animal.cow";
     public static final String GOAT = "animal.goat";
+    public static final String SHEEP = "animal.sheep";
     public static final String MOUNTAIN_GOAT = "animal.mountain_goat";
 
     @Autowired
     private AnimalRepository animalRepository;
+
+    @Autowired
+    private ProduceRepository produceRepository;
 
     public Animal createAnimal(String type, String name) throws AnimalTypeNotFoundException {
         Animal animal;
@@ -40,6 +43,9 @@ public class AnimalService {
                 break;
             case AnimalService.MOUNTAIN_GOAT:
                 animal = new MountainGoat();
+                break;
+            case AnimalService.SHEEP:
+                animal = new Sheep();
                 break;
             default:
                 throw new AnimalTypeNotFoundException();
@@ -57,5 +63,17 @@ public class AnimalService {
 
     public void delete(Integer id) {
         animalRepository.delete(id);
+    }
+
+    public Animal findOne(Integer id) {
+        return animalRepository.findOne(id);
+    }
+
+    @Transactional
+    public Animal findOneWithProduce(Integer id) {
+        Animal animal = animalRepository.findOne(id);
+        animal.setProduce(produceRepository.findByAnimal(animal));
+
+        return animal;
     }
 }

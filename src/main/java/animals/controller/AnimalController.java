@@ -55,4 +55,16 @@ public class AnimalController {
         // Redirect to list
         return "redirect:/animals.html";
     }
+
+    @RequestMapping(value="/animals/{id}", method=RequestMethod.GET)
+    public String show(
+            @PathVariable(value="id") Integer id,
+            Model model) {
+
+        Animal animal = animalService.findOneWithProduce(id);
+        model.addAttribute("animal", animal);
+
+        // Redirect to list
+        return "animals.show";
+    }
 }
