@@ -82,4 +82,8 @@ public abstract class Animal {
     public void setProduce(List<Produce> produce) {
         this.produce = produce;
     }
+
+    public void addProduce(Produce produce) {
+        this.produce.add(produce);
+    }
 }

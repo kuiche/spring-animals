@@ -76,4 +76,9 @@ public class AnimalService {
 
         return animal;
     }
+
+    @Transactional
+    public void createProduce(Produce produce) {
+        produceRepository.save(produce);
+    }
 }

@@ -26,3 +26,25 @@
 		</c:if>
 	</table>
 </div>
+
+<div class="col-md-10">
+	<form:form commandName="produce" cssClass="form-horizontal" method="post" action="/animals/${animal.id}/produce.html">
+		<div class="form-group">
+			<label for="type" class="col-sm-2 control-label">Type:</label>
+			<div class="col-sm-10">
+				<form:input path="type" cssClass="form-control"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="count" class="col-sm-2 control-label">Count:</label>
+			<div class="col-sm-10">
+				<form:input type="number" path="count" cssClass="form-control"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-2">
+				<input type="submit" value="Add Produce" class="btn btn-sm btn-primary">
+			</div>
+		</div>
+	</form:form>
+</div>

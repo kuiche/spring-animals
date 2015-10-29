@@ -7,7 +7,6 @@ import javax.persistence.Entity;
  * Created by Sam on 2015-10-27.
  */
 @Entity
-@DiscriminatorValue("GOAT")
 public class Goat extends Animal {
     /**
      * Goats go "BEHHH"

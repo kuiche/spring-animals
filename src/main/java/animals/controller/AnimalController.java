@@ -1,5 +1,6 @@
 package animals.controller;
 
+import animals.entity.Produce;
 import animals.entity.animal.Animal;
 import animals.entity.animal.Cow;
 import animals.exception.AnimalTypeNotFoundException;
@@ -20,6 +21,11 @@ import java.util.List;
 public class AnimalController {
     @Autowired
     private AnimalService animalService;
+
+    @ModelAttribute("produce")
+    public Produce constructProduce() {
+        return new Produce();
+    }
 
     @RequestMapping(value="/animals", method=RequestMethod.GET)
     public String index(Model model) {
@@ -66,5 +72,13 @@ public class AnimalController {
 
         // Redirect to list
         return "animals.show";
+    }
+
+    @RequestMapping(value="/animals/{id}/produce", method=RequestMethod.POST)
+    public String addProduce(@PathVariable(value="id") Integer id, @ModelAttribute("produce") Produce produce, Model model) {
+        produce.setAnimal(animalService.findOne(id));
+        animalService.createProduce(produce);
+
+        return "redirect:/animals/" + id.toString() + ".html";
     }
 }
