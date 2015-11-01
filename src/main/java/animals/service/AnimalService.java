@@ -32,8 +32,17 @@ public class AnimalService {
     @Autowired
     private ProduceRepository produceRepository;
 
+    /**
+     * Create an animal given a type and a name
+     *
+     * @param type The animal type
+     * @param name The animal's name
+     * @return
+     * @throws AnimalTypeNotFoundException
+     */
     public Animal createAnimal(String type, String name) throws AnimalTypeNotFoundException {
         Animal animal;
+        // Build the correct animal
         switch (type) {
             case AnimalService.COW:
                 animal = new Cow();
@@ -51,24 +60,44 @@ public class AnimalService {
                 throw new AnimalTypeNotFoundException();
         }
 
+        // Set fields
         animal.setName(name);
         animal.setBirthDate(new Date(System.currentTimeMillis()));
 
+        // save
         return animalRepository.save(animal);
     }
 
+    /**
+     * Find all animals
+     * @return All the animals
+     */
     public List<Animal> findAll() {
         return animalRepository.findAll();
     }
 
+    /**
+     * Deletes an animal given an id
+     * @param id
+     */
     public void delete(Integer id) {
         animalRepository.delete(id);
     }
 
+    /**
+     * Finds an animal given an id
+     * @param id
+     * @return The animal
+     */
     public Animal findOne(Integer id) {
         return animalRepository.findOne(id);
     }
 
+    /**
+     * Given an id, finds an animal and it's associated produce
+     * @param id
+     * @return The animal with produce loaded
+     */
     @Transactional
     public Animal findOneWithProduce(Integer id) {
         Animal animal = animalRepository.findOne(id);
@@ -77,6 +106,10 @@ public class AnimalService {
         return animal;
     }
 
+    /**
+     * Creates a produce entry
+     * @param produce
+     */
     @Transactional
     public void createProduce(Produce produce) {
         produceRepository.save(produce);

@@ -16,6 +16,8 @@ import java.util.List;
 
 /**
  * Created by Sam on 2015-10-27.
+ *
+ * Controller for animal functionality
  */
 @Controller
 public class AnimalController {
