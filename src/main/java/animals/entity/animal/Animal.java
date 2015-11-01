@@ -29,7 +29,7 @@ public abstract class Animal {
     @Column(name="date_death")
     private Date deathDate;
 
-    @OneToMany
+    @OneToMany(mappedBy="animal", cascade=CascadeType.REMOVE)
     private List<Produce> produce;
 
     /**
