@@ -10,6 +10,8 @@
 	${animal.name} is a ${animal.animalType}. He says "${animal.noise}".
 </p>
 
+<h2>Produce</h2>
+
 <div class="col-md-2">
 	<table class="table table-hover">
 		<c:if test="${animal.produce.size() > 0}">
@@ -42,7 +44,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-2">
+			<div class="col-sm-2 pull-right">
 				<input type="submit" value="Add Produce" class="btn btn-sm btn-primary">
 			</div>
 		</div>
