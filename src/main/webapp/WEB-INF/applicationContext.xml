@@ -18,6 +18,7 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
+    <!-- This configuration should be moved to some external config to be modified for different environments -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost/animals" />
@@ -25,6 +26,7 @@
         <property name="password" value="" />
     </bean>
 
+    <!-- Hibernate setup -->
     <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
         <property name="packagesToScan" value="animals.entity" />
         <property name="dataSource" ref="dataSource" />
@@ -39,10 +41,7 @@
         </property>
     </bean>
 
-    <bean class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="dataSource" ref="dataSource" />
-    </bean>
-
+    <!-- TransactionManager -->
     <tx:annotation-driven transaction-manager="transactionManager" />
 
     <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
