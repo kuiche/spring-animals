@@ -24,6 +24,9 @@ public class DBInitService {
     @Autowired
     private ProduceRepository produceRepository;
 
+    /**
+     * Seed method, used during development. Left in to "show my working" as it were.
+     */
     // @PostConstruct
     public void init() {
         Animal seedCow = new Cow();
