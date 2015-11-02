@@ -24,7 +24,7 @@ public class DBInitService {
     @Autowired
     private ProduceRepository produceRepository;
 
-    @PostConstruct
+    // @PostConstruct
     public void init() {
         Animal seedCow = new Cow();
         seedCow.setName("George");
